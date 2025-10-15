@@ -7,6 +7,13 @@ using UnityEngine.EventSystems;
 
 public class CardSlot : InventorySlot<Card>, IPointerClickHandler, ISerializationCallbackReceiver
 {
+    protected Card slotted;
+    public Card Slotted
+    {
+        get {return slotted;}
+        set => slotted = value != null ? HoldObject(value.gameObject) : null;
+    }
+
     public Deck Deck => (Deck)inventory;
 
     protected Deck serializedDeck;
@@ -26,19 +33,10 @@ public class CardSlot : InventorySlot<Card>, IPointerClickHandler, ISerializatio
         return;
         if (transform.childCount == 0)
         {
-            var card = HoldObject(eventData.pointerClick);
-            SubscribeToCard(card);
+            HoldObject(eventData.pointerClick);
         }
     }
-
-    public override void OnDrop(PointerEventData eventData)
-    {
-        if (transform.childCount == 0)
-        {
-            HoldObject(eventData.pointerDrag);
-        }
-    }
-
+    
     protected override Card HoldObject(GameObject card)
     {
         if (Deck.Full()) return null; 
@@ -63,6 +61,8 @@ public class CardSlot : InventorySlot<Card>, IPointerClickHandler, ISerializatio
 
     public void RemoveFromDeck(Card card)
     {
+        if (card == Slotted) 
+            Slotted = null;
         Deck.Remove(card);
         card.OnDeckChanged -= () => RemoveFromDeck(card);
     }
