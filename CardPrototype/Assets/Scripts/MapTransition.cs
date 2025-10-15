@@ -6,6 +6,7 @@ public class MapTransition : MonoBehaviour
     [SerializeField] PolygonCollider2D mapBoundry;
     private CinemachineConfiner2D confiner;
     [SerializeField] Direction direction;
+    [SerializeField] float distance = 9;
 
     enum Direction { Up, Down, Left, Right }
 
@@ -29,19 +30,20 @@ public class MapTransition : MonoBehaviour
         switch (direction)
         {
             case Direction.Up:
-                newPos.y += 7;
+                newPos.y += distance;
                 break;
             case Direction.Down:
-                newPos.y -= 7;
+                newPos.y -= distance;
                 break;
             case Direction.Left:
-                newPos.x += 7;
+                newPos.x += distance;
                 break;
             case Direction.Right:
-                newPos.x -= 7;
+                newPos.x -= distance;
                 break;
         }
 
+        //player.GetComponent<PlayerController>().rb.linearVelocity = Vector3.zero;
         player.transform.position = newPos;
     }
 }

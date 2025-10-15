@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     //General Movement 
     [SerializeField] private float moveSpeed = 5f;
     private Vector2 moveInput;
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
     Animator _animator;
 
     void Start()
@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         rb.linearVelocity = moveInput * moveSpeed;
 
