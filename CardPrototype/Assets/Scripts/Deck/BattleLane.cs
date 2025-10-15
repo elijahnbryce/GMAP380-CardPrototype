@@ -10,6 +10,8 @@ public class BattleLane : Deck
     [SerializeField]
     private List<Transform> slots = new();
 
+    public event Action onCardAdded;
+
     private new void Start()
     {
         capacity = 2;
@@ -28,6 +30,7 @@ public class BattleLane : Deck
         Transform t = card.transform.parent;
         Cards.Insert(slots.IndexOf(t), card);
         card.dragEnabled = false;
+        onCardAdded?.Invoke();
     }
 
     public override void Stack(Card card)
