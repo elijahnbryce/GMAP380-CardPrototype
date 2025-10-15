@@ -613,7 +613,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f93e134a8db02e34ea0dfa064171f8db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapBoundry: {fileID: 1589890017}
+  mapBoundry: {fileID: 1515217232}
   direction: 2
 --- !u!61 &415025620
 BoxCollider2D:
@@ -804,7 +804,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f93e134a8db02e34ea0dfa064171f8db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapBoundry: {fileID: 1589890017}
+  mapBoundry: {fileID: 1515217232}
   direction: 3
 --- !u!61 &708209519
 BoxCollider2D:
@@ -1429,7 +1429,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f93e134a8db02e34ea0dfa064171f8db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapBoundry: {fileID: 1589890017}
+  mapBoundry: {fileID: 1515217232}
   direction: 1
 --- !u!61 &1010835280
 BoxCollider2D:
@@ -1522,7 +1522,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f93e134a8db02e34ea0dfa064171f8db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapBoundry: {fileID: 1589890017}
+  mapBoundry: {fileID: 1515217232}
   direction: 1
 --- !u!61 &1134195036
 BoxCollider2D:
@@ -1699,7 +1699,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f93e134a8db02e34ea0dfa064171f8db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapBoundry: {fileID: 1589890017}
+  mapBoundry: {fileID: 1515217232}
   direction: 0
 --- !u!61 &1379407014
 BoxCollider2D:
