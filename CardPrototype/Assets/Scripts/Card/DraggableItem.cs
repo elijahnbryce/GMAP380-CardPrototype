@@ -26,8 +26,12 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public Image image;
     public event Action OnParentChanged;
 
+    public bool dragEnabled = true;
+
     public void OnBeginDrag(PointerEventData eventData)
     {
+        if (!dragEnabled) return;
+
         parentAfterDrag = transform.parent;
         transform.SetParent(transform.root);
         transform.SetAsLastSibling();
@@ -36,11 +40,15 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     public void OnDrag(PointerEventData eventData)
     {
+        if (!dragEnabled) return;
+
         transform.position = Input.mousePosition;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        if (!dragEnabled) return;
+        
         transform.SetParent(parentAfterDrag);
         image.raycastTarget = true;
     }
