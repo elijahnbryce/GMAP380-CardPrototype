@@ -1,4 +1,4 @@
-using Unity.Cinemachine;
+﻿using Unity.Cinemachine;
 using UnityEngine;
 
 public class MapTransition : MonoBehaviour
@@ -45,3 +45,5 @@ public class MapTransition : MonoBehaviour
         player.transform.position = newPos;
     }
 }
+
+
