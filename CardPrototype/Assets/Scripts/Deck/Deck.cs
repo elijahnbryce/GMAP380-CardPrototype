@@ -38,14 +38,14 @@ public class Deck : Inventory<Card>, ISerializationCallbackReceiver
         serializedItems = null;
     }
 
-    public void Start()
+    public virtual void Start()
     {
-        slot.GetComponent<DeckSlot>().SetDeck(this);
+        RegisterSlot(slot.GetComponent<DeckSlot>());
         capacity = 52;
         GenerateFullDeck();
     }
 
-    public void ShuffleDeck(int loop = 0)
+    public virtual void ShuffleDeck(int loop = 0)
     {
         for (int l = 0; l < loop; l++)
         {
@@ -57,23 +57,31 @@ public class Deck : Inventory<Card>, ISerializationCallbackReceiver
         }
     }
 
-    public Card Draw() => Cards.Pop();
+    public virtual Card Draw() => Cards.Pop();
 
-    public void Add(Card card) =>
-        _ = Cards.Contains(card) | Full() ? 0 :
-        ((Func<int>)(() => { Cards.Add(card); return 0; }))();
+    public virtual void Add(Card card)
+    {
+        if (Cards.Contains(card) | Full()) return;
+        
+        Cards.Add(card);
+        card.transform.SetAsLastSibling();
+    }
+    
+    public virtual void Stack(Card card) 
+    {
+        if (Cards.Contains(card)) return;
 
-    public void Stack(Card card) =>
-        _ = Cards.Contains(card) ? 0 :
-        ((Func<int>)(() => { Cards.Insert(0, card); return 0; }))();
+        Cards.Insert(0, card);
+        card.transform.SetAsFirstSibling();
+    }
 
-    public void Bury(Card card) => Add(card);
+    public virtual void Bury(Card card) => Add(card);
 
-    public void Remove(Card card) => Cards.Remove(card);
+    public virtual void Remove(Card card) => Cards.Remove(card);
 
-    public bool Full() => Size >= Capacity;
+    public virtual bool Full() => Size >= Capacity;
 
-    protected void GenerateFullDeck()
+    protected virtual void GenerateFullDeck()
     {
         foreach (CardData.Suit suit in System.Enum.GetValues(typeof(CardData.Suit)))
         {
@@ -87,5 +95,10 @@ public class Deck : Inventory<Card>, ISerializationCallbackReceiver
                 //Add(card);
             }
         }
+    }
+
+    protected virtual void RegisterSlot(CardSlot slot)
+    {
+        slot.SetDeck(this);
     }
 }

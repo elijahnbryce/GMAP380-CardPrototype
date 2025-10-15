@@ -5,15 +5,31 @@ using UnityEngine;
 
 public class CardHand : Deck
 {
-    //private Transform slots;
-    //public new int size, capacity;
-
     private new void Start()
     {
-        foreach (Transform child in slot.transform)
+        foreach (Transform child in slot)
         {
-            var s = child.GetComponent<CardSlot>();
-            s.SetDeck(this);
+            RegisterSlot(child.GetComponent<CardSlot>());
         }
+    }
+
+    public void ShowHand()
+    {
+        slot.gameObject.SetActive(true);
+        foreach (Transform child in slot)
+        {
+            CardSlot cs = child.GetComponent<CardSlot>();
+            if (cs.Slotted != null) cs.Slotted.dragEnabled = true;
+        }
+    }
+    
+    public void HideHand()
+    {
+        foreach (Transform child in slot)
+        {
+            CardSlot cs = child.GetComponent<CardSlot>();
+            if (cs.Slotted != null) cs.Slotted.dragEnabled = false;
+        }
+        slot.gameObject.SetActive(false);
     }
 }

@@ -86,6 +86,13 @@ public class Card : DraggableItem
         img.sprite = sprite;
     }
     
+    public int GetValue()
+    {
+        int val = (int)data.number;
+        // more logic later
+        return val;
+    }
+
     // action debugging method
     void PrintEventListeners(Action a)
     {
