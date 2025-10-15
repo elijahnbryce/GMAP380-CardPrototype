@@ -428,7 +428,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapBoundry: {fileID: 721533393}
-  direction: 2
+  direction: 3
 --- !u!61 &156058531
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2704,7 +2704,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapBoundry: {fileID: 1167329099}
-  direction: 3
+  direction: 2
 --- !u!61 &1988334239
 BoxCollider2D:
   m_ObjectHideFlags: 0
